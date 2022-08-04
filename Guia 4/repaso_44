@@ -1,0 +1,111 @@
+Algoritmo repaso_4
+	
+	Definir tablero Como Caracter
+	Definir tablero2 Como Entero
+	Dimension tablero[9, 12]
+	Dimension tablero2[9]
+	
+	Escribir "Su crucigrama es el siguiente"
+	Escribir ""
+	
+	inicializarMatriz(tablero, 9, 12)
+	agregarPalabra(tablero, "vector", 0)
+	agregarPalabra(tablero, "matriz", 1)
+	agregarPalabra(tablero, "programa", 2)
+	agregarPalabra(tablero, "subprograma", 3)
+	agregarPalabra(tablero, "subproceso", 4)
+	agregarPalabra(tablero, "variable", 5)
+	agregarPalabra(tablero, "entero", 6)
+	agregarPalabra(tablero, "para", 7)
+	agregarPalabra(tablero, "mientras", 8)
+	acomodarPalabras(tablero)
+	imprimirMatriz(tablero, 9, 12)
+	
+	
+FinAlgoritmo
+
+SubProceso inicializarMatriz(tablero, 9, 12)
+	Definir i, j Como Entero
+	
+	Para i = 0 Hasta 8 Con Paso 1 Hacer
+		Para j = 0 Hasta 11 Con Paso 1 Hacer
+			tablero[i, j] = "*"
+		Fin Para
+	Fin Para
+	
+FinSubProceso
+
+SubProceso agregarPalabra (tablero, palabra, 0)
+	Definir i, j, aux, aux2 Como Entero
+	
+	Para i = 0 Hasta 8 Con Paso 1 Hacer
+		Para j = 0 Hasta 11 Con Paso 1 Hacer
+			tablero[0, j] = Subcadena("vector", j, j)
+			tablero[1, j] = Subcadena("matriz", j, j)
+			tablero[2, j] = Subcadena("programa", j, j)
+			tablero[3, j] = Subcadena("subprograma", j, j)
+			tablero[4, j] = Subcadena("subproceso", j, j)
+			tablero[5, j] = Subcadena("variable", j, j)
+			tablero[6, j] = Subcadena("entero", j, j)
+			tablero[7, j] = Subcadena("para", j, j)
+			tablero[8, j] = Subcadena("mientras", j, j)
+		Fin Para
+	Fin Para
+	
+FinSubProceso
+
+Funcion tabla = buscarR(tablero Por Referencia, fila)
+	Definir aux, i, j, tabla Como Entero
+	
+	Escribir "" 
+	aux = 0 
+	
+		Para j = 0 Hasta 11 Con Paso 1 Hacer
+			
+			Segun tablero[fila, j] Hacer
+				"r":
+					aux = aux + 1
+					Si aux = 1
+						tabla = j
+					Fin Si
+			Fin Segun
+		Fin Para
+		aux = 0
+
+	
+FinSubProceso
+
+SubProceso acomodarPalabras(tablero)
+	
+	Definir i, j, r, diferencia Como Entero
+	
+	Para i = 0 Hasta 8 Con Paso 1 Hacer
+		r = buscarR(tablero, i)
+		diferencia = 5 - r 
+		
+		Para j = 11 Hasta 0 Con Paso -1 Hacer
+			Si j-diferencia >= 0 Entonces
+				tablero[i, j] = tablero[i, j-diferencia]
+			Sino
+				tablero[i, j] = " "
+			FinSi
+		Fin Para
+	Fin Para
+	
+FinSubProceso
+
+SubProceso imprimirMatriz(tablero, 9, 12)
+	Definir i, j Como Entero
+	
+	Para i = 0 Hasta 8 Con Paso 1 Hacer
+		Para j = 0 Hasta 11 Con Paso 1 Hacer
+			Escribir tablero[i, j] " " Sin Saltar
+		Fin Para
+		Escribir ""
+	Fin Para
+	
+FinSubProceso
+
+
+
+
